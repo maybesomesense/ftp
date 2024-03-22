@@ -9,11 +9,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->comboBox->show();
-
-    fileexplorer fdfgd(ui->comboBox);
+    QComboBox* comb = ui->comboBox;
+    fileexplorer fdfgd(comb);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+

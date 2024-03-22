@@ -12,7 +12,7 @@ public:
         //QDir directory("D:/"); // Устанавливаем стартовую папку на диске D:
         updateComboBox(QDir::currentPath());
 
-        //updateComboBox(QDir::toNativeSeparators("D:/"));
+        //updateComboBox(QDir::toNativeSeparators("D:\\"));
 
         // Соединяем событие выбора в comboBox с обработчиком
         connect(comboBox, QOverload<int>::of(&QComboBox::activated),
