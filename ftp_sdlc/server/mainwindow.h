@@ -2,9 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "client.h"
-#include "filecombobox.h"
-#include <QVBoxLayout>
+#include <QTcpServer>
+#include <QTcpSocket>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,11 +13,7 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-private slots:
-    void onFileSelected(const QString &filePath);
 
-private:
-    FileComboBox *fileComboBox;
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -26,9 +21,16 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
+
+public slots:
+    void on_newConnection();
+    void on_readyRead();
 
 private:
     Ui::MainWindow *ui;
-    client* clientForm;
+    QTcpServer *serv;
 };
 #endif // MAINWINDOW_H
+
+

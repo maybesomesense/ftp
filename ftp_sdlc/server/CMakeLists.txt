@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(ftp_sdlc VERSION 0.1 LANGUAGES CXX)
+project(ftp_server VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -20,40 +20,37 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-        client.cpp
-        client.h
-        client.ui
-        filecombobox.cpp
-        filecombobox.h
+        server.cpp
+        server.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(ftp_sdlc
+    qt_add_executable(ftp_server
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
     )
 # Define target properties for Android with Qt 6 as:
-#    set_property(TARGET ftp_sdlc APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
+#    set_property(TARGET ftp_server APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
-        add_library(ftp_sdlc SHARED
+        add_library(ftp_server SHARED
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
-        add_executable(ftp_sdlc
+        add_executable(ftp_server
             ${PROJECT_SOURCES}
         )
     endif()
 endif()
 
-target_link_libraries(ftp_sdlc PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-target_link_libraries(ftp_sdlc PRIVATE Qt6::Network)
+target_link_libraries(ftp_server PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(ftp_server PRIVATE Qt6::Network)
 
-set_target_properties(ftp_sdlc PROPERTIES
+set_target_properties(ftp_server PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -61,10 +58,10 @@ set_target_properties(ftp_sdlc PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-install(TARGETS ftp_sdlc
+install(TARGETS ftp_server
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(ftp_sdlc)
+    qt_finalize_executable(ftp_server)
 endif()
