@@ -25,6 +25,8 @@ set(PROJECT_SOURCES
         client.ui
         filecombobox.cpp
         filecombobox.h
+        AES.cpp
+        AES.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

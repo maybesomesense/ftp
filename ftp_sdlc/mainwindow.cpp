@@ -31,7 +31,7 @@ void MainWindow::on_pushButton_clicked()
             clientForm->show();
             this->close();
         } else{
-            QMessageBox::warning(nullptr, "Предупреждение", "Это предупреждение!");
+            QMessageBox::warning(nullptr, "Предупреждение", "Неверный логин или пароль.");
             ui->lineEdit->clear();
             ui->lineEdit_2->clear();
             return;

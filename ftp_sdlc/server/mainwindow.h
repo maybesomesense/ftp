@@ -18,6 +18,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void listFiles(QTcpSocket *socket);
+    void upload(QTcpSocket *socket);
+    void download(QTcpSocket *socket);
 
 private slots:
     void on_pushButton_clicked();

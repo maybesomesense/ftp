@@ -28,6 +28,11 @@ public:
     explicit client(QWidget *parent = nullptr);
     ~client();
 
+protected:
+    void dragEnterEvent(QDragEnterEvent *event) override;
+
+    void dropEvent(QDropEvent *event) override;
+
 public slots:
     void handleFileSelected(const QString &filePath);
 
@@ -39,6 +44,10 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_6_clicked();
 
 private:
     Ui::client *ui;
